@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Easv.VideoApp.Infrastructure.Data.Repositories
 {
-    class VideoRepository : IVideoRepository
+    public class VideoRepository : IVideoRepository
     {
         //hej
         static int id = 1;
@@ -31,7 +31,7 @@ namespace Easv.VideoApp.Infrastructure.Data.Repositories
         }
         public List<Video> ReadAll()
         {
-            throw new NotImplementedException();
+            return _videos;
         }
 
         public Video Update(Video videoUpdate)
