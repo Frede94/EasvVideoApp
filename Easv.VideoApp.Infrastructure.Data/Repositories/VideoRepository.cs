@@ -9,31 +9,53 @@ namespace Easv.VideoApp.Infrastructure.Data.Repositories
     {
         //hej
         static int id = 1;
-        static List<Video> videos = new List<Video>();
+        private List<Video> _videos = new List<Video>();
 
         public Video Create(Video video)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Video> ReadAll()
-        {
-            throw new NotImplementedException();
+            video.Id = id++;
+            _videos.Add(video);
+            return video;
         }
 
         public Video ReadById(int id)
+        {
+            foreach (var video in _videos)
+            {
+                if (video.Id == id)
+                {
+                    return video;
+                }
+            }
+            return null;            
+        }
+        public List<Video> ReadAll()
         {
             throw new NotImplementedException();
         }
 
         public Video Update(Video videoUpdate)
         {
-            throw new NotImplementedException();
+            var videoFraDB = this.ReadById(videoUpdate.Id);
+            if (videoFraDB != null)
+            {
+                videoFraDB.Name = videoUpdate.Name;
+                videoFraDB.Genre = videoUpdate.Genre;
+                return videoFraDB;
+            }
+            return null;
         }
 
         public Video delete(int id)
         {
-            throw new NotImplementedException();
+            var videoFundet = this.ReadById(id);
+
+            if (videoFundet != null)
+            {
+                _videos.Remove(videoFundet);
+                return videoFundet;
+            }
+            return null;
         }
     }
 }

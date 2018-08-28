@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using Easv.VideoApp.Core.DomainService;
 using Easv.VideoApp.Core.Entity;
+using Easv.VideoApp.Infrastructure.Data.Repositories;
 
 namespace Easv.VideoApp.ConsoleApp
 {
     class Program
     {
         //Infrastructure.Data
-        static int id = 1;
-        static List<Video> videos = new List<Video>();
 
+        static IVideoRepository videoRepository;
         static void Main(string[] args)
         {
+            videoRepository = new VideoRepository();
             //Infrastructure.Data
             //Initialise Data - Seed Database
             videos.Add(new Video
