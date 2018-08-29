@@ -7,7 +7,6 @@ namespace Easv.VideoApp.Infrastructure.Data.Repositories
 {
     public class VideoRepository : IVideoRepository
     {
-        //hej
         static int id = 1;
         private List<Video> _videos = new List<Video>();
 
